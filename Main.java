@@ -49,5 +49,30 @@ public class Main {
             s.displayStudent();
         }
     }
-}
+private static void searchStudent() {
+        System.out.print("Enter Student ID to search: ");
+        String id = scanner.nextLine();
+        for (Student s : studentList) {
+            if (s.getStudentID().equalsIgnoreCase(id)) {
+                System.out.println("Student Found:");
+                s.displayStudent();
+                return;
+            }
+        }
+        System.out.println("Student with ID " + id + " not found.");
+    }
 
+    private static void calculateAverage() {
+        if (studentList.isEmpty()) {
+            System.out.println("No students in the system to calculate average.");
+            return;
+        }
+        double total = 0;
+        for (Student s : studentList) {
+            total += s.getMarks();
+        }
+        double average = total / studentList.size();
+        System.out.println("Total Students: " + studentList.size());
+        System.out.println("Average Marks of All Students: " + average);
+    }
+}
